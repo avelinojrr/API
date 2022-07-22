@@ -22,3 +22,17 @@ const connection = mysql.createConnection({
   password: 'rootPass',
   database: 'airline_mysql'
 });
+
+// Check connect
+connection.connect((err) => {
+  if (err) {
+      console.error('error connecting: ' + err.stack);
+      return;
+  }
+  console.log('connected as id ' + connection.threadId);
+});
+
+// listen on port 3000
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
